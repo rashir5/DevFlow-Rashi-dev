@@ -205,9 +205,9 @@ DevFlow-Rashi-dev/
 │   └── package.json
 │
 ├── screenshots/
-│   ├── img1.png
-│   ├── img2.png
-│   └── img3.png
+│   ├── login.png
+│   ├── register.png
+│   └── journal-entry.png
 │
 ├── .gitignore
 └── README.md
@@ -416,17 +416,17 @@ The following was tested locally with the frontend at `http://localhost:5173` an
 
 ## Screenshots
 
-### Dashboard — light theme
+### Login
 
-![Dashboard light theme](screenshots/img1.png)
+![DevFlow Login](screenshots/login.png)
 
-### Filling in a journal entry
+### Register
 
-![Entering a journal entry](screenshots/img2.png)
+![DevFlow Register](screenshots/register.png)
 
-### Dashboard with saved entries
+### Dashboard
 
-![Dashboard with multiple entries](screenshots/img3.png)
+![DevFlow Dashboard](screenshots/journal-entry.png)
 
 ---
 
