@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import EntryForm from "../components/EntryForm";
 import EntryTable from "../components/EntryTable";
+import { useAuth } from "../context/AuthContext";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
-console.log("API_URL =", API_URL);
 
 export default function Dashboard() {
+  const { auth, logout } = useAuth();
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
@@ -29,6 +30,13 @@ export default function Dashboard() {
   const [savedMsg, setSavedMsg] = useState("");
   const [saveError, setSaveError] = useState("");
 
+  function authHeaders() {
+    return {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${auth.token}`,
+    };
+  }
+
   function getRequestErrorMessage(err, fallbackMessage) {
     return err.message === fallbackMessage ? fallbackMessage : "Network error";
   }
@@ -38,9 +46,15 @@ export default function Dashboard() {
     setLoadError("");
 
     try {
-      const res = await fetch(`${API_URL}/entries`);
+      const res = await fetch(`${API_URL}/entries`, {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      });
 
       if (!res.ok) {
+        if (res.status === 401) {
+          logout();
+          return;
+        }
         throw new Error("Failed to load entries");
       }
 
@@ -60,11 +74,15 @@ export default function Dashboard() {
     try {
       const res = await fetch(`${API_URL}/entries`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: authHeaders(),
         body: JSON.stringify(form),
       });
 
       if (!res.ok) {
+        if (res.status === 401) {
+          logout();
+          return;
+        }
         throw new Error("Failed to save entry");
       }
 
@@ -86,9 +104,15 @@ export default function Dashboard() {
       setLoadError("");
 
       try {
-        const res = await fetch(`${API_URL}/entries`);
+        const res = await fetch(`${API_URL}/entries`, {
+          headers: { Authorization: `Bearer ${auth.token}` },
+        });
 
         if (!res.ok) {
+          if (res.status === 401) {
+            logout();
+            return;
+          }
           throw new Error("Failed to load entries");
         }
 
@@ -139,6 +163,10 @@ export default function Dashboard() {
           <span className="theme-switch-track">
             <span className="theme-switch-thumb" />
           </span>
+        </button>
+        <span className="user-greeting">Hi, {auth.user.name}</span>
+        <button className="logout-button" type="button" onClick={logout}>
+          Logout
         </button>
       </div>
 

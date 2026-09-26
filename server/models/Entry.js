@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const entrySchema = new mongoose.Schema(
   {
-    date: { type: String, required: true, unique: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, index: true },
+    date: { type: String, required: true },
     workedOn: String,
     learned: String,
     blockers: String,
@@ -12,5 +13,8 @@ const entrySchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+// Each user can only have one entry per date
+entrySchema.index({ userId: 1, date: 1 }, { unique: true });
 
 module.exports = mongoose.model("Entry", entrySchema);
