@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap");
+
+:root {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-body);
+  background: var(--color-page-background);
+  color-scheme: light;
+  --color-page-background:
+    radial-gradient(circle at top left, rgba(207, 239, 227, 0.65), transparent 28%),
+    linear-gradient(180deg, #f6fbf8 0%, #eef3f2 100%);
+  --color-ink: #16312d;
+  --color-ink-soft: #2b4b45;
+  --color-body: #35544d;
+  --color-muted: #5f7872;
+  --color-accent-strong: #1f6d5e;
+  --color-surface-accent: #e0f0ea;
+  --color-success: #18805d;
+  --color-error: #b42318;
+  --color-panel: rgba(255, 255, 255, 0.78);
+  --color-panel-border: rgba(10, 37, 32, 0.08);
+  --color-panel-shadow: rgba(15, 23, 42, 0.08);
+  --color-input: rgba(248, 250, 252, 0.92);
+  --color-input-focus: #ffffff;
+  --color-input-border: rgba(12, 50, 43, 0.12);
+  --color-placeholder: #8b9a96;
+  --color-table: rgba(255, 255, 255, 0.72);
+  --color-table-head: rgba(236, 243, 240, 0.96);
+  --color-table-border: rgba(12, 50, 43, 0.08);
+  --color-table-hover: rgba(240, 247, 244, 0.68);
+  --color-button-start: #123d37;
+  --color-button-end: #237062;
+  --color-button-shadow: rgba(18, 61, 55, 0.22);
+  --color-button-shadow-hover: rgba(18, 61, 55, 0.28);
+  --color-orb-primary: rgba(57, 153, 123, 0.22);
+  --color-orb-secondary: rgba(19, 97, 90, 0.16);
+  --color-switch-track: rgba(22, 49, 45, 0.12);
+  --color-switch-thumb: #ffffff;
+  --color-switch-icon: #1f6d5e;
+  --color-switch-shadow: rgba(15, 23, 42, 0.16);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-page-background:
+    radial-gradient(circle at top left, rgba(55, 146, 119, 0.16), transparent 30%),
+    linear-gradient(180deg, #101615 0%, #171f1d 100%);
+  --color-ink: #edf7f4;
+  --color-ink-soft: #c6ddd7;
+  --color-body: #b7cbc5;
+  --color-muted: #91aaa3;
+  --color-accent-strong: #6dd8bb;
+  --color-surface-accent: rgba(109, 216, 187, 0.12);
+  --color-success: #70e0b6;
+  --color-error: #ff8a80;
+  --color-panel: rgba(23, 31, 29, 0.8);
+  --color-panel-border: rgba(213, 243, 235, 0.1);
+  --color-panel-shadow: rgba(0, 0, 0, 0.24);
+  --color-input: rgba(14, 22, 20, 0.86);
+  --color-input-focus: rgba(15, 28, 25, 0.96);
+  --color-input-border: rgba(213, 243, 235, 0.14);
+  --color-placeholder: #6f8781;
+  --color-table: rgba(14, 22, 20, 0.72);
+  --color-table-head: rgba(26, 42, 38, 0.96);
+  --color-table-border: rgba(213, 243, 235, 0.09);
+  --color-table-hover: rgba(42, 75, 67, 0.42);
+  --color-button-start: #237062;
+  --color-button-end: #45a489;
+  --color-button-shadow: rgba(0, 0, 0, 0.26);
+  --color-button-shadow-hover: rgba(0, 0, 0, 0.34);
+  --color-orb-primary: rgba(109, 216, 187, 0.16);
+  --color-orb-secondary: rgba(44, 135, 116, 0.14);
+  --color-switch-track: rgba(109, 216, 187, 0.28);
+  --color-switch-thumb: #0f1816;
+  --color-switch-icon: #7de0c3;
+  --color-switch-shadow: rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--color-page-background);
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
